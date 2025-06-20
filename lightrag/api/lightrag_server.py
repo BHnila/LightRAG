@@ -160,6 +160,7 @@ def create_app(args):
         if api_key
         else "",
         "version": __api_version__,
+        "root_path": "/lightrag",  # Set base path for the application
         "openapi_url": "/openapi.json",  # Explicitly set OpenAPI schema URL
         "docs_url": "/docs",  # Explicitly set docs URL
         "redoc_url": "/redoc",  # Explicitly set redoc URL
@@ -366,7 +367,7 @@ def create_app(args):
     @app.get("/")
     async def redirect_to_webui():
         """Redirect root path to /webui"""
-        return RedirectResponse(url="/webui")
+        return RedirectResponse(url="/lightrag/webui")
 
     @app.get("/auth-status")
     async def get_auth_status():
