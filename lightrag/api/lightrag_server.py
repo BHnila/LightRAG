@@ -551,12 +551,7 @@ def create_app(args):
     # Add Ollama API routes
     ollama_api = OllamaAPI(rag, top_k=args.top_k, api_key=api_key)
     app.include_router(ollama_api.router, prefix="/api")
-
-    @app.get("/")
-    async def redirect_to_webui():
-        """Redirect root path to /webui"""
-    # Use path without root_path prefix; FastAPI will expose it at /lightrag/webui externally
-    return RedirectResponse(url="/webui")
+    # Root path redirect removed per request; accessing "/" will now return 404
 
     @app.get("/auth-status")
     async def get_auth_status():
