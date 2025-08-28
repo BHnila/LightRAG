@@ -555,7 +555,8 @@ def create_app(args):
     @app.get("/")
     async def redirect_to_webui():
         """Redirect root path to /webui"""
-    return RedirectResponse(url="/lightrag/webui")
+    # Use path without root_path prefix; FastAPI will expose it at /lightrag/webui externally
+    return RedirectResponse(url="/webui")
 
     @app.get("/auth-status")
     async def get_auth_status():
