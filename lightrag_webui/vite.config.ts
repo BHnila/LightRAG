@@ -12,8 +12,8 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src')
     }
   },
-  // base: import.meta.env.VITE_BASE_URL || '/webui/',
-  base: webuiPrefix,
+  // Allow override via VITE_BASE_URL for deployments under a prefixed root_path (e.g. /lightrag/webui/)
+  base: import.meta.env.VITE_BASE_URL || webuiPrefix,
   build: {
     outDir: path.resolve(__dirname, '../lightrag/api/webui'),
     emptyOutDir: true,
