@@ -1,6 +1,9 @@
 import { ButtonVariantType } from '@/components/ui/Button'
 
-export const backendBaseUrl = ''
+// Backend base path (FastAPI root_path). When the server runs under /lightrag,
+// we must prefix API calls so that POST /login -> /lightrag/login etc.
+// Allow override via VITE_BACKEND_BASE for flexibility; fallback to /lightrag.
+export const backendBaseUrl = (import.meta as any).env?.VITE_BACKEND_BASE || '/lightrag'
 export const webuiPrefix = '/webui/'
 
 export const controlButtonVariant: ButtonVariantType = 'ghost'
